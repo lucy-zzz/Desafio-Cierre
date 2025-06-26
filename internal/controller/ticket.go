@@ -16,6 +16,25 @@ type TicketDefault struct {
 	sv internal.ServiceTicket
 }
 
+func (c *TicketDefault) GetTotalTickets() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		data, err := c.sv.GetTotalTickets()
+
+		if err != nil {
+			response.JSON(w, http.StatusInternalServerError, map[string]any{
+				"message": "error",
+				"status":  http.StatusInternalServerError,
+			})
+			return
+		}
+
+		response.JSON(w, http.StatusOK, map[string]any{
+			"message": "ok",
+			"data":    data,
+		})
+	}
+}
+
 func (c *TicketDefault) GetByCountry() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		dest := chi.URLParam(r, "dest")

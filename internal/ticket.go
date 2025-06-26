@@ -22,6 +22,7 @@ type RepositoryTicket interface {
 }
 
 type ServiceTicket interface {
+	GetTotalTickets() (int, error)
 	GetTicketsAmountByDestinationCountry(c string) (t int, err error)
 	GetPercentageTicketsByDestinationCountry(c string) (p float64, err error)
 }

@@ -87,6 +87,7 @@ func (a *ApplicationDefault) SetUp() (err error) {
 	})
 
 	(*a).rt.Route("/ticket", func(r chi.Router) {
+		r.Get("/", cr.GetTotalTickets())
 		r.Get("/getByCountry/{dest}", cr.GetByCountry())
 		r.Get("/getAverage/{dest}", cr.GetAverage())
 	})
