@@ -14,8 +14,7 @@ func NewRepositoryTicketMap(dbFile map[int]internal.TicketAttributes, lastId int
 }
 
 type RepositoryTicketMap struct {
-	db map[int]internal.TicketAttributes
-
+	db     map[int]internal.TicketAttributes
 	lastId int
 }
 
